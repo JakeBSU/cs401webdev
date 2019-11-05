@@ -42,3 +42,22 @@ $pdo = new PDO(
 );
 
 //The PDO object can now be used to query MySQL.
+class connect {
+    public function checkUsername() {
+        $sql = "SELECT COUNT(username) AS num FROM users WHERE username = :username";
+        $stmt = $pdo->prepare($sql);
+    
+    //Bind the provided username to our prepared statement.
+        $stmt->bindValue(':username', $username);
+    
+    //Execute.
+        $stmt->execute();
+    
+    //Fetch the row.
+        $returnRow = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $returnRow;
+    }
+    public function createUser() {
+
+    }
+}

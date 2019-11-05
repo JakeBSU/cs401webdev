@@ -1,124 +1,6 @@
-<?php
-//register.php
-
-/**
- * Start the session.
- */
-session_start();
-$valid = true;
-
-/**
- * Include ircmaxell's password_compat library.
- */
-require 'lib/password.php';
-
-/**
- * Include our MySQL connection.
- */
-require 'connect.php';
-
-
-//If the POST var "register" exists (our submit button), then we can
-//assume that the user has submitted the registration form.
-if(isset($_POST['register'])){
-    
-    //Retrieve the field values from our registration form.
-    $username = !empty($_POST['username']) ? trim($_POST['username']) : null;
-    $email = !empty($_POST['email']) ? trim($_POST['email']) : null;
-    $psw1 = !empty($_POST['password']) ? trim($_POST['password']) : null;
-    $psw2 = !empty($_POST['password2']) ? trim($_POST['password2']) : null;
-
-    if (empty($username)) {
-        $messages[] = "Please enter a username";
-        $valid = false;
-      }
-      if ($psw1 != $psw2) {
-        $messages[] = "Passwords dont match";
-        $valid = false;
-      }
-      if(strlen($username) < 4) {
-              $messages[]= "DISPLAY NAME MUST BE MORE THAN 4 CHARACTERS LONG AND SHORTER THAN 20";
-              $valid = false;
-          }
-          
-      if(strlen($username) > 20) {
-              $messages[]= "DISPLAY NAME MUST BE MORE THAN 4 CHARACTERS LONG AND SHORTER THAN 20";
-              $valid = false;
-          }
-      if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) { 
-          $messages[] = "PLEASE ENTER A VALID EMAIL";
-              $valid = false;
-          }
-      if(!preg_match('/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,20}$/',$psw1)) {
-          $messages[] = "Password must contain at least one: number,symbol, uppercase letter, lowercase letter. And 8 characters long.";
-          $valid = false;
-      }
-      if (!$valid) {
-          $_SESSION['messages'] = $messages;
-          $_SESSION['form_input'] = $_POST;
-          header("Location: register.php");
-          exit();
-      }
-      if ($valid) {
-        $_SESSION['messages'] = null;
-        $_SESSION['form_input'] = $_POST;
-    }
-
-    //TO ADD: Error checking (username characters, password length, etc).
-    //Basically, you will need to add your own error checking BEFORE
-    //the prepared statement is built and executed.
-    
-    //Now, we need to check if the supplied username already exists.
-    
-    //Construct the SQL statement and prepare it.
-    $sql = "SELECT COUNT(username) AS num FROM users WHERE username = :username";
-    $stmt = $pdo->prepare($sql);
-    
-    //Bind the provided username to our prepared statement.
-    $stmt->bindValue(':username', $username);
-    
-    //Execute.
-    $stmt->execute();
-    
-    //Fetch the row.
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-    //If the provided username already exists - display error.
-    //TO ADD - Your own method of handling this error. For example purposes,
-    //I'm just going to kill the script completely, as error handling is outside
-    //the scope of this tutorial.
-    if($row['num'] > 0){
-        $messages[] = "That username already exists.";
-        $_SESSION['messages'] = $messages;
-        header("Location: register.php");
-        exit();
-    }
-    
-    //Hash the password as we do NOT want to store our passwords in plain text.
-    $passwordHash = password_hash($psw1, PASSWORD_BCRYPT, array("cost" => 12));
-    
-    //Prepare our INSERT statement.
-    //Remember: We are inserting a new row into our users table.
-    $sql = "INSERT INTO users (username, password, email) VALUES (:username, :password, :email)";
-    $stmt = $pdo->prepare($sql);
-    
-    //Bind our variables.
-    $stmt->bindValue(':username', $username);
-    $stmt->bindValue(':password', $passwordHash);
-    $stmt->bindValue(':email', $email);
-
-    //Execute the statement and insert the new account.
-    $result = $stmt->execute();
-    
-    //If the signup process is successful.
-    if($result){
-        //What you do here is up to you!
-        header("Location: login.php");
-    }
-    
-}
-
+<?php session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -142,7 +24,7 @@ if(isset($_POST['register'])){
   <li><a href="characters.html">Characters</a></li>
   <li><a href="rankings.html">Rankings</a></li>
   <li><a href="games.html">Games</a></li>
-  <li><a href="login.html">Login</a></li>
+  <li><a href="login.php">Login</a></li>
   <li><a href="register.php">Sign-Up</a></li>
   </ul>
   </p></div>
@@ -154,15 +36,15 @@ if(isset($_POST['register'])){
     }
 } ?>
 <h1>Register</h1>
-        <form action="register.php" method="post">
+        <form action="register_handler.php" method="post">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username"><br>
+            <input value="<?php echo isset($_SESSION['form_input']['username']) ? $_SESSION['form_input']['username'] : ''; ?>" type="text" id="username" name="username"><br>
             <label for="password">Password</label>
-            <input type="text" id="password" name="password"><br>
+            <input value="<?php echo isset($_SESSION['form_input']['password']) ? $_SESSION['form_input']['password'] : ''; ?>" type="text" id="password" name="password"><br>
             <label for="password2">Re-type Password</label>
-            <input type="text" id="password2" name="password2"><br>
+            <input value="<?php echo isset($_SESSION['form_input']['password2']) ? $_SESSION['form_input']['password2'] : ''; ?>" type="text" id="password2" name="password2"><br>
             <label for="email">Email</label>
-            <input type="text" id="email" name="email"><br>
+            <input value="<?php echo isset($_SESSION['form_input']['email']) ? $_SESSION['form_input']['email'] : ''; ?>" type="text" id="email" name="email"><br>
             <input type="submit" name="register" value="Register"></button>
         </form>
 <hr />
