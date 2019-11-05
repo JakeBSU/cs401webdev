@@ -65,23 +65,11 @@ if(isset($_POST['register'])){
         $_SESSION['messages'] = null;
         $_SESSION['form_input'] = null;
     }
-
-    //TO ADD: Error checking (username characters, password length, etc).
-    //Basically, you will need to add your own error checking BEFORE
-    //the prepared statement is built and executed.
-    
-    //Now, we need to check if the supplied username already exists.
-    
-    //Construct the SQL statement and prepare it.
-    
     
     //Fetch the row.
     $row = $dao->checkUsername($username);
     
     //If the provided username already exists - display error.
-    //TO ADD - Your own method of handling this error. For example purposes,
-    //I'm just going to kill the script completely, as error handling is outside
-    //the scope of this tutorial.
     if($row['num'] > 0){
         $messages[] = "That username already exists.";
         $_SESSION['messages'] = $messages;
@@ -96,7 +84,6 @@ if(isset($_POST['register'])){
     
     //If the signup process is successful.
     if($result){
-        //What you do here is up to you!
         header("Location: login.php");
     }
     
