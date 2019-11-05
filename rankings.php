@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,15 +20,24 @@
     <p>Rankings</p></div>
 </header>
 <body>
-<div class = navbar><p><ul>
+<div class = navbar><p>
 <li><a href="index.php">Home</a></li>
 <li><a href="characters.php">Characters</a></li>
 <li><a href="rankings.php">Rankings</a></li>
 <li><a href="games.php">Games</a></li>
+<?php
+if (!isset($_SESSION['user_id'])) { ?>
 <li><a href="login.php">Login</a></li>
 <li><a href="register.php">Sign-Up</a></li>
-</ul>
+<?php } else { ?>
+<li><a href='logout_handler.php'>Logout</a></li>
+<?php } ?>
 </p></div>
+<div class = login><?php
+if (isset($_SESSION['user_id'])) {
+	echo "<li><a href='#'>Welcome ".$_SESSION['user_name']."!</a></li>";
+	
+}?>
 <hr />
 	<table>
 	<caption>Rankings Mockup</caption>

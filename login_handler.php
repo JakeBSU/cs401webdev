@@ -56,7 +56,7 @@ if(isset($_POST['login'])){
             $_SESSION['messages'] = null;
             $_SESSION['bad_login'] = null;
             //Redirect 
-            header('Location: index.php');
+            header('Location: home.php');
             exit;
             
         } if(!$validPassword){

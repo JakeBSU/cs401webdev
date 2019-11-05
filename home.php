@@ -2,25 +2,8 @@
 
 //home.php
 
-/**
- * Start the session.
- */
 session_start();
 
-
-/**
- * Check if the user is logged in.
- */
-if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
-    
-}
-
-
-/**
- * Print out something that only logged in users can see.
- */
-
-echo 'Congratulations! You are logged in!';
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,17 +25,23 @@ echo 'Congratulations! You are logged in!';
 </header>
 <div class = navbar><p>
 <li><a href="index.php">Home</a></li>
-<li><a href="characters.html">Characters</a></li>
-<li><a href="rankings.html">Rankings</a></li>
-<li><a href="games.html">Games</a></li>
+<li><a href="characters.php">Characters</a></li>
+<li><a href="rankings.php">Rankings</a></li>
+<li><a href="games.php">Games</a></li>
+<?php
+if (!isset($_SESSION['user_id'])) { ?>
 <li><a href="login.php">Login</a></li>
 <li><a href="register.php">Sign-Up</a></li>
+<?php } else { ?>
+<li><a href='logout_handler.php'>Logout</a></li>
+<?php } ?>
 </p></div>
-<div class = login>
-
-
+<div class = login><?php
+if (isset($_SESSION['user_id'])) {
+	echo "<li><a href='#'>Welcome ".$_SESSION['user_name']."!</a></li>";
+	
+}?>
 </div>
-
 <body>
 <hr />
 <div><p>Popular Characters</p><ol>

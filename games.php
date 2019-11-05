@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,26 +17,34 @@
 	<title>Gem State Smash</title>
 	<h1>Gem State Smash</h1>
     <h2>Idaho Smash Fan Site</h2>
-    <p>Rankings</p></div>
+    <p>Games</p></div>
 </header>
 <body>
-<div class = navbar><p><ul>
+<div class = navbar><p>
 <li><a href="index.php">Home</a></li>
 <li><a href="characters.php">Characters</a></li>
 <li><a href="rankings.php">Rankings</a></li>
 <li><a href="games.php">Games</a></li>
+<?php
+if (!isset($_SESSION['user_id'])) { ?>
 <li><a href="login.php">Login</a></li>
 <li><a href="register.php">Sign-Up</a></li>
-</ul>
+<?php } else { ?>
+<li><a href='logout_handler.php'>Logout</a></li>
+<?php } ?>
 </p></div>
+<div class = login><?php
+if (isset($_SESSION['user_id'])) {
+	echo "<li><a href='#'>Welcome ".$_SESSION['user_name']."!</a></li>";
+	
+}?>
 <hr />
-	<table>
-	<caption>Rankings Mockup</caption>
-	<tr><th>Player Name</th><th>Tag</th><th>Characters</th><th>Score</th></tr>
-	<tr><td>Player 1</td><td>TheBest</td><td>Pikachu</td><td>1000</td></tr>
-	<tr><td>Player 2</td><td>PrettyGood</td><td>Bowser</td><td>900</td></tr>
-	<tr><td>Player 3</td><td>ThirdGuy</td><td>Kirby</td><td>800</td></tr>
-	</table>
+<h1>Games</h1>
+<p>Super Smash Bros.<br><a href="https://www.ssbwiki.com/Super_Smash_Bros.">Wiki</a></p>
+<p>Super Smash Bros. Melee<br><a href="https://www.ssbwiki.com/Super_Smash_Bros._Melee">Wiki</a></p>
+<p>Super Smash Bros. Brawl<br><a href="https://www.ssbwiki.com/Super_Smash_Bros._Brawl">Wiki</a></p>
+<p>Super Smash Bros. for Wii U/3DS<br><a href="https://www.ssbwiki.com/Super_Smash_Bros._4">Wiki</a></p>
+<p>Super Smash Bros. Ultimate<br><a href="https://www.ssbwiki.com/Super_Smash_Bros._Ultimate">Wiki</a></p>
 <hr />
 <footer>
   <address>
