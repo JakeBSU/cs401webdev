@@ -1,5 +1,3 @@
-mysql://b9719fdd1787f7:00f7255a@us-cdbr-iron-east-05.cleardb.net/heroku_9604bb6ecbe8698?reconnect=true<?php
-
 <?php
 class Dao {
 private $host = "us-cdbr-iron-east-05.cleardb.net";
@@ -10,6 +8,7 @@ public function getConnection () {
 return
 new PDO("mysql:host={$this->host};dbname={$this->db}"
 }
+?>
 
 /*
 *
