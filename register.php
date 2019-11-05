@@ -88,7 +88,10 @@ if(isset($_POST['register'])){
     //I'm just going to kill the script completely, as error handling is outside
     //the scope of this tutorial.
     if($row['num'] > 0){
-        die('That username already exists!');
+        $messages[] = "That username already exists.";
+        $_SESSION['messages'] = $messages;
+        header("Location: register.php");
+        exit();
     }
     
     //Hash the password as we do NOT want to store our passwords in plain text.
