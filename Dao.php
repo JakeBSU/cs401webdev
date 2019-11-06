@@ -53,4 +53,24 @@ public function loginUser($username) {
     $userReturn = $stmt->fetch(PDO::FETCH_ASSOC);
     return $userReturn;
 }
+public function getPlayers() {
+   $conn = $this->getConnection();
+   //Prepare statement
+   $sql = "SELECT * FROM players";
+   $stmt = $conn->prepare($sql);
+   //Execute statment
+   $stmt->execute();
+   $row = $stmt->fetch(PDO::FETCH_ASSOC);
+   return $row;
+}
+public function getData() {
+   $conn = $this->getConnection();
+   //Prepare statement
+   $sql = "SELECT * FROM players";
+   $stmt = $conn->prepare($sql);
+   //Execute statment
+   $stmt->execute();
+   $row = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+   return $row;
+}
 }

@@ -1,5 +1,7 @@
 <?php
 session_start();
+require 'Dao.php';
+$dao = new Dao();
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,13 +41,36 @@ if (isset($_SESSION['user_id'])) {
 	
 }?>
 <hr />
-	<table>
-	<caption>Rankings Mockup</caption>
-	<tr><th>Player Name</th><th>Tag</th><th>Characters</th><th>Score</th></tr>
-	<tr><td>Player 1</td><td>TheBest</td><td>Pikachu</td><td>1000</td></tr>
-	<tr><td>Player 2</td><td>PrettyGood</td><td>Bowser</td><td>900</td></tr>
-	<tr><td>Player 3</td><td>ThirdGuy</td><td>Kirby</td><td>800</td></tr>
-	</table>
+<?php
+try {
+	$con= new PDO('mysql:host=us-cdbr-iron-east-05.cleardb.net;dbname=heroku_9604bb6ecbe8698', "b9719fdd1787f7", "00f7255a");
+	$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$query = "SELECT * FROM players";
+	//first pass just gets the column names
+	print "<table> n";
+	$result = $con->query($query);
+	//return only the first row (we only need field names)
+	$row = $result->fetch(PDO::FETCH_ASSOC);
+	print " <tr> n";
+	foreach ($row as $field => $value){
+	 print " <th>$field</th> n";
+	} // end foreach
+	print " </tr> n";
+	//second query gets the data
+	$data = $con->query($query);
+	$data->setFetchMode(PDO::FETCH_ASSOC);
+	foreach($data as $row){
+	 print " <tr> n";
+	 foreach ($row as $name=>$value){
+	 print " <td>$value</td> n";
+	 } // end field loop
+	 print " </tr> n";
+	} // end record loop
+	print "</table> n";
+	} catch(PDOException $e) {
+	 echo 'ERROR: ' . $e->getMessage();
+	} // end tr
+?>
 <hr />
 <footer>
   <address>
