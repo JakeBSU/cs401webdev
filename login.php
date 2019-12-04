@@ -18,15 +18,16 @@
             <h2>Idaho Smash Fan Site</h2>
             <p>Main Page</p></div>
         </header>
-        <div class = navbar><p> 
-        <a href="index.php">Home</a>
-        <a href="characters.php">Characters</a>
-        <a href="rankings.php">Rankings</a>
-        <a href="games.php">Games</a>
-        <a href="login.php">Login</a>
-        <a href="register.php">Sign-Up</a>
-        </p></div>
         <body>
+        <div class = navbar><p><ul>
+  <li><a href="index.php">Home</a></li>
+  <li><a href="characters.php">Characters</a></li>
+  <li><a href="rankings.php">Rankings</a></li>
+  <li><a href="games.php">Games</a></li>
+  <li><a href="login.php">Login</a></li>
+  <li><a href="register.php">Sign-Up</a></li>
+  </ul>
+  </p></div>
         <hr />
         <?php if (isset($_SESSION['messages'])) {
          foreach ($_SESSION['messages'] as $message) {
@@ -34,6 +35,7 @@
          }
         } 
         ?>
+<center><div>
         <h1>Login</h1>
         <form action="login_handler.php" method="post">
             <label for="username">Username</label>
@@ -42,6 +44,7 @@
             <input value="<?php echo isset($_SESSION['bad_login']['password']) ? $_SESSION['bad_login']['password'] : ''; ?>" type="text" id="password" name="password"><br>
             <input type="submit" name="login" value="Login">
         </form>
+</center></div>
         <hr />
         <footer>
           <address>

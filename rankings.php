@@ -41,36 +41,38 @@ if (isset($_SESSION['user_id'])) {
 	
 }?>
 <hr />
+<center><div>
 <?php
 try {
 	$con= new PDO('mysql:host=us-cdbr-iron-east-05.cleardb.net;dbname=heroku_9604bb6ecbe8698', "b9719fdd1787f7", "00f7255a");
 	$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$query = "SELECT * FROM players";
 	//first pass just gets the column names
-	print "<table> n";
+	print "<table> ";
 	$result = $con->query($query);
 	//return only the first row (we only need field names)
 	$row = $result->fetch(PDO::FETCH_ASSOC);
-	print " <tr> n";
+	print " <tr> ";
 	foreach ($row as $field => $value){
-	 print " <th>$field</th> n";
+	 print " <th>$field</th> ";
 	} // end foreach
-	print " </tr> n";
+	print " </tr> ";
 	//second query gets the data
 	$data = $con->query($query);
 	$data->setFetchMode(PDO::FETCH_ASSOC);
 	foreach($data as $row){
-	 print " <tr> n";
+	 print " <tr> ";
 	 foreach ($row as $name=>$value){
-	 print " <td>$value</td> n";
+	 print " <td>$value</td> ";
 	 } // end field loop
-	 print " </tr> n";
+	 print " </tr> ";
 	} // end record loop
-	print "</table> n";
+	print "</table> ";
 	} catch(PDOException $e) {
 	 echo 'ERROR: ' . $e->getMessage();
 	} // end tr
 ?>
+</center></div>
 <hr />
 <footer>
   <address>

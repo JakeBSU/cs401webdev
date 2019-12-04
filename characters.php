@@ -42,7 +42,6 @@ if (isset($_SESSION['user_id'])) {
 	
 }?>
 <hr />
-<p>Characters</p>
 <p>Super Smash Bros.</p>
 <!-- Slideshow container -->
 <div class="slideshow-container">
