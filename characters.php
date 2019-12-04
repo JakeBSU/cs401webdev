@@ -46,21 +46,33 @@ if (isset($_SESSION['user_id'])) {
 
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
-    <div class="numbertext">1 / 3</div>
-    <img src="mario.jpg" style="width:100%">
-    <div class="text">Caption Text</div>
+    <div class="numbertext">1 / 5</div>
+    <img src="fox.png" style="width:100%">
+    <div class="text">Fox</div>
   </div>
 
   <div class="mySlides fade">
-    <div class="numbertext">2 / 3</div>
-    <img src="img2.jpg" style="width:100%">
-    <div class="text">Caption Two</div>
+    <div class="numbertext">2 / 5</div>
+    <img src="daisy.png" style="width:100%">
+    <div class="text">Daisy</div>
   </div>
 
   <div class="mySlides fade">
-    <div class="numbertext">3 / 3</div>
-    <img src="img3.jpg" style="width:100%">
-    <div class="text">Caption Three</div>
+    <div class="numbertext">3 / 5</div>
+    <img src="Ganondorf.png" style="width:100%">
+    <div class="text">Ganondorf</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">4 / 5</div>
+    <img src="inkling.png" style="width:100%">
+    <div class="text">Inkling</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">5 / 5</div>
+    <img src="Ike.png" style="width:100%">
+    <div class="text">Ike</div>
   </div>
 
   <!-- Next and previous buttons -->
@@ -72,9 +84,37 @@ if (isset($_SESSION['user_id'])) {
 <!-- The dots/circles -->
 <div style="text-align:center">
   <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
   <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(5)"></span>
 </div>
+<script>var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}</script>
 <ol>
 	<li>Mario</li>
 	<li>Donkey Kong</li>
