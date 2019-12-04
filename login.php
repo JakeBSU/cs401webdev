@@ -22,7 +22,7 @@
         <a href="index.php">Home</a>
         <a href="characters.php">Characters</a>
         <a href="rankings.php">Rankings</a>
-        <a href="games.html">Games</a>
+        <a href="games.php">Games</a>
         <a href="login.php">Login</a>
         <a href="register.php">Sign-Up</a>
         </p></div>

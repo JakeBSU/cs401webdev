@@ -48,7 +48,7 @@ if (isset($_SESSION['user_id'])) {
 <div class="slideshow-container">
 
   <!-- Full-width images with number and caption text -->
-  <div class="mySlides1 fade hover">
+  <div class="mySlides1 fade">
     <div class="numbertext">1 / 12</div>
     <img src="https://www.ssbwiki.com/images/b/b3/Mario_SSB.png" style="width:100%">
     <div class="text">Mario</div>
