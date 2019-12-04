@@ -39,13 +39,16 @@ if (isset($_SESSION['user_id'])) {
 	
 }?>
 <hr />
-<h1>Games</h1>
+
+<center><h1>Games</h1>
+<center><div>
 <p>Super Smash Bros.<br><a href="https://www.ssbwiki.com/Super_Smash_Bros.">Wiki</a></p>
 <p>Super Smash Bros. Melee<br><a href="https://www.ssbwiki.com/Super_Smash_Bros._Melee">Wiki</a></p>
 <p>Super Smash Bros. Brawl<br><a href="https://www.ssbwiki.com/Super_Smash_Bros._Brawl">Wiki</a></p>
 <p>Super Smash Bros. for Wii U/3DS<br><a href="https://www.ssbwiki.com/Super_Smash_Bros._4">Wiki</a></p>
 <p>Super Smash Bros. Ultimate<br><a href="https://www.ssbwiki.com/Super_Smash_Bros._Ultimate">Wiki</a></p>
-
+</center></div>
+</center>
 <div class="slideshow-container">
 
   <!-- Full-width images with number and caption text -->

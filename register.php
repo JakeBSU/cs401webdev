@@ -35,6 +35,7 @@
         echo $message, '<br>';
     }
 } ?>
+<center><div>
 <h1>Register</h1>
         <form action="register_handler.php" method="post">
             <label for="username">Username</label>
@@ -47,6 +48,7 @@
             <input value="<?php echo isset($_SESSION['form_input']['email']) ? $_SESSION['form_input']['email'] : ''; ?>" type="text" id="email" name="email"><br>
             <input type="submit" name="register" value="Register"></button>
         </form>
+</center></div>
 <hr />
 <footer>
   <address>
