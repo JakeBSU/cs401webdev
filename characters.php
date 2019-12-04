@@ -127,7 +127,7 @@ if (isset($_SESSION['user_id'])) {
 <div class="slideshow-container">
   <div class="mySlides2">
     <img src="https://www.ssbwiki.com/images/6/60/Mario_SSBM.jpg" style="width:100%">
-    <div class="text">Mario</div>
+    
   </div>
 
   <div class="mySlides2">
@@ -234,7 +234,7 @@ if (isset($_SESSION['user_id'])) {
 <div class="slideshow-container">
   <div class="mySlides3 fade">
     <img src="https://www.ssbwiki.com/images/thumb/8/83/Mario_SSBB.jpg/250px-Mario_SSBB.jpg" style="width:100%">
-    <div class="text">Mario</div>
+    
   </div>
 
   <div class="mySlides3 fade">
@@ -323,7 +323,7 @@ if (isset($_SESSION['user_id'])) {
 <div class="slideshow-container">
   <div class="mySlides4 fade">
     <img src="https://www.ssbwiki.com/images/thumb/e/e1/Mario_SSB4.png/250px-Mario_SSB4.png" style="width:100%">
-    <div class="text">Mario</div>
+    
   </div>
 
   <div class="mySlides4 fade">
