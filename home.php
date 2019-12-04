@@ -44,18 +44,40 @@ if (isset($_SESSION['user_id'])) {
 </div>
 <body>
 <hr />
-<div><p>Popular Characters</p><ol>
-	<li>Character 1</li>
-	<li>Character 2</li>
-	<li>Character 3</li>
-</ol></div>
+<div><table>
+<caption>Popular Characters</caption>
+  <tr>
+    <th>Character</th>
+    <th>Player</th>
+    <th>Rank</th>
+  </tr>
+  <tr>
+    <td>Pikachu</td>
+    <td>Mada</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>Ganondorf</td>
+    <td>Vermanubis</td>
+    <td>2</td>
+  </tr>
+</table></div>
 <div><p>Site News</p><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p></div>
-<div><p>Top Players</p></div>
-<ol>
-	<li>Player 1</li>
-	<li>Player 2</li>
-	<li>Player 3</li>
-</ol>
+<div><table>
+<caption>Top Players</caption>
+  <tr>
+    <th>Tag</th>
+    <th>Score</th>
+  </tr>
+  <tr>
+    <td>Mada</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>Vermanubis</td>
+    <td>900</td>
+  </tr>
+</table></div>
 <hr />
 <footer>
   <address>

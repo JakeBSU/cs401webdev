@@ -20,8 +20,8 @@
         </header>
         <div class = navbar><p> 
         <a href="index.php">Home</a>
-        <a href="characters.html">Characters</a>
-        <a href="rankings.html">Rankings</a>
+        <a href="characters.php">Characters</a>
+        <a href="rankings.php">Rankings</a>
         <a href="games.html">Games</a>
         <a href="login.php">Login</a>
         <a href="register.php">Sign-Up</a>

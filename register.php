@@ -21,8 +21,8 @@
 </header>
 <div class = navbar><p><ul>
   <li><a href="index.php">Home</a></li>
-  <li><a href="characters.html">Characters</a></li>
-  <li><a href="rankings.html">Rankings</a></li>
+  <li><a href="characters.php">Characters</a></li>
+  <li><a href="rankings.php">Rankings</a></li>
   <li><a href="games.html">Games</a></li>
   <li><a href="login.php">Login</a></li>
   <li><a href="register.php">Sign-Up</a></li>
